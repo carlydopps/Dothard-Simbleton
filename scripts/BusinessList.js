@@ -57,27 +57,28 @@ document
                     */
 
                 // Declare a variable whose value is equal to the first business found via applying the find() method to the businesses array that makes the condition true - the condition is that the companyName property of the current business object of the .find() interation must include the string produced by the clickEvent (the string of user input)
-                    const foundBusiness = businesses.find(
-                        (business) => business.companyName.includes(keyPressEvent.target.value)
+                    const foundAgent = businesses.find(
+                        (business) => business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value)
                     )
 
-                // If foundBusiness does not equal undefined (using this as a double-check so that it doesn't break if the user input is not capitalized)
+                // If foundAgent does not equal undefined (using this as a double-check so that it doesn't break if the user input is not capitalized)
                 // Or could try doing an if else and using a try again message if it is undefined
-                    // Add this html string to the companySearchResultArticle (the element with class of "foundBusinesses") on the index.html page for the business that was found above
+                    // Add this html string to the companySearchResultArticle (the element with class of "foundAgentes") on the index.html page for the business that was found above
                         // HTML should includd
                             // h3 tag with company name
                             // div tag for company address
-                    if (foundBusiness !== undefined) {
+                    if (foundAgent !== undefined) {
                         companySearchResultArticle.innerHTML = `
-                        <h3>${foundBusiness.companyName}</h3>
-                        <div>
-                            ${foundBusiness.addressFullStreet}
-                            ${foundBusiness.addressCity}, ${foundBusiness.addressStateCode} ${foundBusiness.addressZipCode}
+                        <h3 class="agent__name">${foundAgent.purchasingAgent.nameFirst} ${foundAgent.purchasingAgent.nameLast}</h3>
+                        <div class="agent__company">
+                            ${foundAgent.companyName}
                         </div>
+                        <div class="agent__phone">
+                            ${foundAgent.phoneWork}
                         `
                     } else {
                         companySearchResultArticle.innerHTML = `
-                        No matching results. Please try entering the compnay name again. Search results are case-sensitive.`
+                        No matching results. Please try entering the agent name again. Search results are case-sensitive.`
                     }
                 }
         });

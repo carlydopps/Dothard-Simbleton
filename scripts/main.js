@@ -7,7 +7,7 @@ const contentTarget = document.querySelector("#content")
 
 const renderHTML = () => {
   contentTarget.innerHTML = `
-  <input type="text" placeholder="Enter business name..." id="companySearch" />
+  <input type="text" placeholder="Enter agent name..." id="companySearch" />
 
   <article class="foundBusinesses"></article>
 
