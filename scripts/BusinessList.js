@@ -56,17 +56,17 @@ document
                             }
                     */
 
-                // Declare a variable whose value is equal to the first business found via applying the find() method to the businesses array that makes the condition true - the condition is that the companyName property of the current business object of the .find() interation must include the string produced by the clickEvent (the string of user input)
+                // Declare a variable whose value is equal to the first business (refactored to agent) found via applying the find() method to the businesses array that makes the condition true - the condition is that the companyName property (refactored to purchasing agent first name OR last name property) of the current business object of the .find() interation must include the string produced by the clickEvent (the string of user input)
                     const foundAgent = businesses.find(
-                        (business) => business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value)
+                        (business) => business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value) || business.purchasingAgent.nameLast.includes(keyPressEvent.target.value)
                     )
 
                 // If foundAgent does not equal undefined (using this as a double-check so that it doesn't break if the user input is not capitalized)
                 // Or could try doing an if else and using a try again message if it is undefined
-                    // Add this html string to the companySearchResultArticle (the element with class of "foundAgentes") on the index.html page for the business that was found above
+                    // Add this html string to the companySearchResultArticle (the element with class of "foundBusiness") on the index.html page for the business (refactored to agent) that was found above
                         // HTML should includd
-                            // h3 tag with company name
-                            // div tag for company address
+                            // h3 tag with company name (refactored to agent first and last name)
+                            // div tag for company address (refactored to agent company and agent phone)
                     if (foundAgent !== undefined) {
                         companySearchResultArticle.innerHTML = `
                         <h3 class="agent__name">${foundAgent.purchasingAgent.nameFirst} ${foundAgent.purchasingAgent.nameLast}</h3>
