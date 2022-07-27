@@ -61,11 +61,13 @@ document
                         (business) => business.companyName.includes(keyPressEvent.target.value)
                     )
 
-
+                // If foundBusiness does not equal undefined (using this as a double-check so that it doesn't break if the user input is not capitalized)
+                // Or could try doing an if else and using a try again message if it is undefined
                     // Add this html string to the companySearchResultArticle (the element with class of "foundBusinesses") on the index.html page for the business that was found above
                         // HTML should includd
                             // h3 tag with company name
                             // div tag for company address
+                    if (foundBusiness !== undefined) {
                         companySearchResultArticle.innerHTML = `
                         <h3>${foundBusiness.companyName}</h3>
                         <div>
@@ -73,5 +75,9 @@ document
                             ${foundBusiness.addressCity}, ${foundBusiness.addressStateCode} ${foundBusiness.addressZipCode}
                         </div>
                         `
+                    } else {
+                        companySearchResultArticle.innerHTML = `
+                        No matching results. Please try entering the compnay name again. Search results are case-sensitive.`
                     }
+                }
         });
